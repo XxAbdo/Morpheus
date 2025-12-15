@@ -25,5 +25,5 @@ Clone the repo and go ahead! I am open to contributions.
 * ADD Matrix \times constant operation (DONE)
 * ADD better error handling
 * IMPROVE the performance of the library
-* ADD testing framework
+* ADD testing framework (DONE)
 * ADD performance checking
