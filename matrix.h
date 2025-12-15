@@ -57,25 +57,18 @@ public:
       for (int j = 0; j < m2.columnsize; j++) {
         vec m2_col = m2.getCol(j);
 
-        std::vector<double> elementProduct;
-        for (int k = 0; k < m2_col.size(); k++) {
+        double sum{};
+        for (u_int k = 0; k < m2_col.size(); k++) {
 
-          elementProduct.push_back(m1_row[k] * m2_col[k]);
-
-          if (k == m2_col.size() -
-                       1) { // last cycle add all the number to get the product
-            double sum_of_elems{};
-            for (double x : elementProduct) {
-              sum_of_elems += x;
-            }
-            matrixProduct.matrix[i][j] = sum_of_elems;
-          }
+          sum += (m1_row[k] * m2_col[k]);
         }
+        matrixProduct.matrix[i][j] = sum;
       }
     }
 
     return matrixProduct;
   }
+
   vec getRow(int n) { return this->matrix[n]; }
   vec getCol(int n) {
     vec res;
