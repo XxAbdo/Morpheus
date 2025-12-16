@@ -10,6 +10,8 @@ using Dim = std::tuple<int, int>;
 using Mat = std::vector<std::vector<double>>;
 using vec = std::vector<double>;
 
+
+// Prints Vectors and other containers.
 template <typename T> void printContainer(const std::vector<T> &vec) {
   std::cout << "--------------\n";
   for (T item : vec) {
@@ -26,6 +28,7 @@ public:
   double rowsize = 0;
   double columnsize = 0;
 
+  // Constructor
   Matrix(Mat mat = {}, Dim Dimension = std::make_tuple(2, 2)) {
     this->matrix = mat;
     this->Dimension = Dimension;
@@ -42,6 +45,8 @@ public:
     }
   }
 
+
+  // A Function that multiplies to matrices by each other.
   static Matrix dot(Matrix m1, Matrix m2) {
     if (m1.columnsize != m2.rowsize) { // m1.col != m2.rowj
       throw std::invalid_argument(
@@ -69,7 +74,11 @@ public:
     return matrixProduct;
   }
 
+
+  // Returns the row of a matrix
   vec getRow(int n) { return this->matrix[n]; }
+  
+  //Returns the column of a matrix
   vec getCol(int n) {
     vec res;
     for (int i = 0; i < rowsize; i++) {
@@ -78,6 +87,8 @@ public:
     return res;
   }
 
+
+  // Function that prints a matrix
   void print() {
     for (int i = 0; i < rowsize; i++) {
 
@@ -90,6 +101,9 @@ public:
       std::cout << ")";
     }
   }
+
+
+  // A Function that multiplies a matrix by a constant
   static Matrix Constmultiplication(Matrix TargetedMat, int k) {
 
     Matrix Result({},
@@ -106,6 +120,8 @@ public:
     return Result;
   }
 
+
+  // A Function that Adds 2 matrices together
   static Matrix AddMatrix(Matrix Mat1, Matrix Mat2) {
 
     if (Mat1.Dimension != Mat2.Dimension) {
@@ -129,6 +145,8 @@ public:
     }
   }
 
+
+  // A Function that subtracts 2 matrices
   static Matrix SubtractMatix(Matrix Mat1, Matrix Mat2) {
 
     if (Mat1.Dimension != Mat2.Dimension) {
